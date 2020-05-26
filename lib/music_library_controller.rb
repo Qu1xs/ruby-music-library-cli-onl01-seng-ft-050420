@@ -18,6 +18,7 @@ class MusicLibraryController
       puts "To play a song, enter 'play song'."
       puts "To quit, type 'exit'."
       puts "What would you like to do?"
+<<<<<<< HEAD
       
       input = gets.strip
       
@@ -78,6 +79,46 @@ class MusicLibraryController
     puts "Which song number would you like to play?"
     sorted_songs = Song.all.sort_by {|song| song.name}
     
+=======
+      input = gets.strip
+      
+      case input
+      when "list_songs"
+        list_songs
+      when "list_artists"
+        list_artists
+      when "list_genres"
+        list_genres
+      when "list_artists"
+        list_songs_by_artist
+      when "list_genre"
+        list_songs_by_genre      
+      when "play_song"
+        play_song
+      end
+    end
+    
+  end
+  
+  def list_songs
+    songs_sorted_by_name = Song.all.sort_by do |song|
+      song.name
+    end
+    songs_sorted_by_name.each.with_index(1) do |song,index|
+      puts "#{index}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+    end
+  end
+  
+  def list_artists
+    Artist.all.each {|artist| puts artist.name}
+  end 
+  
+  def list_genres
+    Genre.all.each {|genre| puts genre.name}
+  end
+  
+  def play_song
+>>>>>>> 86bbaa88f9c2239be3af57f8d4cb19be218f2218
     
     input = gets.strip.to_i 
     if (1..Song.all.length).include?(input)
@@ -88,6 +129,17 @@ class MusicLibraryController
 
   end
   
+<<<<<<< HEAD
+=======
+  def list_artists
+    
+  end
+  
+  def list_genre 
+    
+  end
+  
+>>>>>>> 86bbaa88f9c2239be3af57f8d4cb19be218f2218
 end
 
 # rspec spec/010_music_library_controller_spec.rb
